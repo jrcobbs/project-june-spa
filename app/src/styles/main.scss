@@ -1,0 +1,11 @@
+// =============================================================================
+// main.scss — global stylesheet entry point
+// =============================================================================
+// Imported once, in main.tsx. This is the only "global" stylesheet: theme
+// tokens + base element styles that apply across the whole app. Component
+// styles (e.g. App.scss) are imported next to their component instead.
+//
+// `@use` (not the deprecated `@import`) loads each module exactly once, even if
+// several files pull it in — no duplicated output, no global-order surprises.
+
+@use 'base';

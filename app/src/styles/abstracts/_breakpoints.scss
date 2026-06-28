@@ -1,0 +1,34 @@
+// =============================================================================
+// Breakpoints (abstract — emits NO CSS on its own)
+// =============================================================================
+// One source of truth for every responsive cutoff in the app. Today the design
+// has a single tablet breakpoint, but anything you add here is instantly usable
+// everywhere via the `respond-below` mixin below.
+
+@use 'sass:map';
+
+$breakpoints: (
+  'tablet': 1024px,
+);
+
+// Usage:
+//   @use '../abstracts' as *;
+//   .thing {
+//     padding: 32px;
+//     @include respond-below('tablet') { padding: 20px; }
+//   }
+//
+// Compiles to a normal `@media (max-width: 1024px) { ... }` block. The magic
+// number 1024px now lives in exactly one place.
+@mixin respond-below($name) {
+  $value: map.get($breakpoints, $name);
+
+  @if $value {
+    @media (max-width: $value) {
+      @content;
+    }
+  } @else {
+    @error "respond-below: unknown breakpoint `#{$name}`. " +
+      "Known breakpoints: #{map.keys($breakpoints)}.";
+  }
+}
