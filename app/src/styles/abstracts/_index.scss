@@ -1,0 +1,8 @@
+// =============================================================================
+// Abstracts barrel
+// =============================================================================
+// A single entry point so consumers can `@use '../abstracts' as *;` and get all
+// mixins/functions/variables, instead of importing each partial by hand.
+// (Like a package's public API — add `@forward` lines as you add abstracts.)
+
+@forward 'breakpoints';
